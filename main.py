@@ -19,6 +19,11 @@ def get_db():
         db.close()
 
 
+@app.get("/")
+async def root():
+    return {"message": "Nothing here. Go to locahlhost:8000/docs for the OpenAPI interface"}
+
+
 @app.get("/books")
 async def get_books(db: Session = Depends(get_db)):
     return crud.get_books(db=db)
