@@ -18,14 +18,14 @@ def get_books(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_book(db: Session, book: schemas.BookCreate):
-    db_user = models.Book(name=book.name, author=book.author, year_of_publication=book.year_of_publication)
+    book_record = models.Book(name=book.name, author=book.author, year_of_publication=book.year_of_publication)
     try:
-        db.add(db_user)
+        db.add(book_record)
         db.commit()
     except IntegrityError:
         raise HTTPException(409)
-    db.refresh(db_user)
-    return db_user
+    db.refresh(book_record)
+    return book_record
 
 
 def update_book(db: Session, book: schemas.BookUpdate):
