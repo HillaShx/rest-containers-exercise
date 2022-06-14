@@ -46,7 +46,7 @@ async def update_book(book: schemas.BookUpdate, db: Session = Depends(get_db)):
 
 @app.delete("/books/<book_id>")
 async def delete_book(book_id: int, db: Session = Depends(get_db)):
-    crud.delete(db=db, book_id=book_id)
+    crud.delete_book(db=db, book_id=book_id)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

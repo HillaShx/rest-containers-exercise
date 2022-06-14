@@ -38,7 +38,7 @@ def update_book(db: Session, book: schemas.BookUpdate):
     return get_book_by_id(db, book.id)
 
 
-def delete(db: Session, book_id: int):
+def delete_book(db: Session, book_id: int):
     book = get_book_by_id(db, book_id)
     if book is not None:
         db.delete(book)
